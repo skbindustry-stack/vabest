@@ -79,7 +79,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── Header / Nav ──────────────────────────────────── */
 .site-header {
-  background: var(--bg-white);
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(16px) saturate(130%);
   border-bottom: 2px solid var(--border);
   position: sticky;
   top: 0;
@@ -91,7 +92,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 20px;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 .logo {
   display: flex;
@@ -99,11 +100,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 10px;
 }
 .logo-img {
-  height: 48px;
+  height: 64px;
   width: auto;
-  max-width: 180px;
+  max-width: 230px;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 8px 11px rgba(22,58,74,0.22));
+  transition: transform .35s ease, filter .35s ease;
+}
+.logo:hover .logo-img {
+  transform: translateY(-2px) scale(1.025);
+  filter: drop-shadow(0 11px 15px rgba(8,127,140,0.28));
 }
 .footer-emblem {
   width: 180px;
@@ -231,7 +238,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   inset: 0;
   background: url('../images/water-splash.jpg') center / cover no-repeat;
-  opacity: 0.09;
+  opacity: 0.12;
   pointer-events: none;
   z-index: 0;
 }
@@ -259,7 +266,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     inset -4px -5px 12px rgba(8,127,140,0.18),
     inset 4px 4px 10px rgba(255,255,255,0.78),
     0 10px 24px rgba(8,127,140,0.09);
+  animation: waterDropFloat 7s ease-in-out infinite;
+  transform-origin: center;
 }
+.wd:nth-child(2n) { animation-delay: -2.5s; animation-duration: 9s; }
+.wd:nth-child(3n) { animation-delay: -4s; animation-duration: 8s; }
 /* light-refraction highlight — the dot that makes it look real */
 .wd::before {
   content: '';
@@ -333,8 +344,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: radial-gradient(circle at 80% 20%, #087F8C 0%, #163A4A 100%);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(127,224,220,.55) 0, rgba(127,224,220,0) 28%),
+    linear-gradient(135deg, #163A4A 0%, #087F8C 58%, #065F69 100%);
   padding: 40px 0 80px;
+}
+.hero::before,
+.page-hero::before,
+.cta-section::before,
+.stats-band::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  inset: -35% -15%;
+  background:
+    radial-gradient(circle at 15% 55%, rgba(216,251,247,.16) 0 2%, transparent 2.4%),
+    radial-gradient(circle at 45% 32%, rgba(255,255,255,.12) 0 1.4%, transparent 1.8%),
+    radial-gradient(circle at 78% 68%, rgba(127,224,220,.16) 0 2.6%, transparent 3%),
+    repeating-radial-gradient(ellipse at 50% 100%, transparent 0 34px, rgba(255,255,255,.045) 35px 37px, transparent 38px 72px);
+  background-size: 310px 250px, 260px 220px, 360px 300px, 100% 100%;
+  animation: waterDrift 18s linear infinite;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  width: 44vw;
+  height: 44vw;
+  min-width: 420px;
+  min-height: 420px;
+  right: -12vw;
+  top: -16vw;
+  border: 1px solid rgba(216,251,247,.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 55px rgba(127,224,220,.04), 0 0 0 110px rgba(216,251,247,.025);
+  animation: waterPulse 8s ease-in-out infinite;
 }
 .hero-container {
   display: flex;
@@ -348,21 +392,42 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-logo-wrap {
   position: relative;
   z-index: 2;
-  flex: 0 0 320px;
+  flex: 0 0 410px;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: float 6s ease-in-out infinite;
+  animation: logoFloat 5.5s ease-in-out infinite;
+}
+.hero-logo-wrap::before {
+  content: '';
+  position: absolute;
+  width: 92%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(216,251,247,.23), rgba(127,224,220,.08) 45%, transparent 70%);
+  animation: waterPulse 6s ease-in-out infinite;
+  z-index: -1;
 }
 .hero-right-logo {
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 24px 34px rgba(3,25,35,.48)) drop-shadow(0 4px 10px rgba(255,255,255,.20));
 }
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0) rotate(-.35deg); }
+  50% { transform: translateY(-16px) rotate(.35deg); }
+}
+@keyframes waterDropFloat {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(8px,-15px,0) scale(1.045); }
+}
+@keyframes waterDrift {
+  from { transform: translate3d(0,0,0); }
+  to { transform: translate3d(160px,-70px,0); }
+}
+@keyframes waterPulse {
+  0%, 100% { transform: scale(.94); opacity: .58; }
+  50% { transform: scale(1.06); opacity: 1; }
 }
 @media (max-width: 768px) {
   .hero-container {
@@ -371,8 +436,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     gap: 30px;
   }
   .hero-logo-wrap {
-    flex: 0 0 200px;
-    max-width: 200px;
+    flex: 0 0 230px;
+    max-width: 230px;
     margin: 0 auto;
   }
 }
@@ -587,10 +652,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: all var(--transition);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 7px 24px rgba(22,58,74,.055);
 }
 .product-card:hover {
   border-color: var(--primary);
-  box-shadow: var(--shadow);
+  box-shadow: 0 16px 36px rgba(8,127,140,.15);
+  transform: translateY(-4px);
 }
 .catalog-grid {
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -898,11 +965,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── CTA Section ───────────────────────────────────── */
 .cta-section {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(127,224,220,.22), transparent 30%),
+    linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   padding: 80px 0;
   text-align: center;
   color: #fff;
+  position: relative;
+  overflow: hidden;
 }
+.cta-section .container { position: relative; z-index: 1; }
 .cta-section h2 {
   font-family: var(--font-head);
   font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -921,7 +993,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── About Page ─────────────────────────────────────── */
 .page-hero {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background:
+    radial-gradient(circle at 82% 10%, rgba(127,224,220,.42), transparent 32%),
+    linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 72%, #065F69 100%);
   padding: 72px 0 70px;
   color: #fff;
   position: relative;
@@ -1439,6 +1513,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .main-nav { display: none; }
   .nav-right .nav-cta { display: none; }
   .hamburger { display: flex; }
+  .logo-img { height: 58px; max-width: 205px; }
 }
 
 @media (max-width: 768px) {
@@ -1485,6 +1560,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .section { padding: 40px 0; }
   .section-header h2 { font-size: 1.65rem; }
   .hero h1 { font-size: 1.9rem; }
+  .logo-img { height: 52px; max-width: 180px; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
 
@@ -1509,6 +1585,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* domain cards — stack cleanly */
   .domain-card { padding: 16px 14px; gap: 12px; }
   .domain-icon { width: 44px; height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-wrap, .wd, .hero::before, .page-hero::before,
+  .cta-section::before, .stats-band::before, .hero::after,
+  .hero-logo-wrap::before, .hero-waves svg, .wave-divider-anim svg,
+  .page-hero-waves svg { animation: none !important; }
 }
 
 /* Scroll-triggered header shadow */
@@ -1562,9 +1645,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── Stats Band (replaces boxed stat cards) ─────────── */
 .stats-band {
-  background: linear-gradient(135deg, #163A4A 0%, #087F8C 50%, #163A4A 100%);
+  background:
+    radial-gradient(circle at 50% 120%, rgba(127,224,220,.30), transparent 48%),
+    linear-gradient(120deg, #163A4A 0%, #087F8C 50%, #163A4A 100%);
   padding: 52px 0;
+  position: relative;
+  overflow: hidden;
 }
+.stats-band .container { position: relative; z-index: 1; }
 .stats-row {
   display: flex;
   align-items: center;
