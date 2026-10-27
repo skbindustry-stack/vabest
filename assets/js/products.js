@@ -97,7 +97,7 @@
         <h2 class="product-name">${name}</h2>
         <div class="product-specs" id="spec-${index}">
           <div class="spec-table-wrap"><table><tbody>${rows}</tbody></table></div>
-          <a class="product-enquire" href="dealer.html?product=${encodeURIComponent(name)}">Enquire about this product</a>
+          <a class="product-enquire" href="dealer.html?product=${encodeURIComponent(name)}">Enquire</a>
         </div>
       </div>
     </article>`;

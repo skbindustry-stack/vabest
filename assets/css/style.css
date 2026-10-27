@@ -773,12 +773,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .product-specs td { color: var(--text-dark); }
 .product-enquire {
   display: inline-flex;
+  align-items: center;
   margin-top: 14px;
   color: #c71321;
-  font-weight: 700;
-  font-size: .82rem;
+  font-weight: normal;
+  font-size: .88rem;
+  text-decoration: none;
 }
-.product-enquire::after { content: ' →'; margin-left: 5px; }
+.product-enquire:hover { text-decoration: underline; }
+.product-enquire::after { content: ' →'; margin-left: 5px; font-weight: normal; }
 @media (max-width: 980px) {
   .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
