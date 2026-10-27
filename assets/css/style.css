@@ -748,17 +748,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .product-shot {
   width: 100%;
   height: auto;
-  aspect-ratio: 1.545 / 1;
-  background-image: var(--product-image);
-  background-repeat: no-repeat;
+  aspect-ratio: 1024 / 682;
   background-color: #fff;
-  background-size: 100% auto;
   border-bottom: 1px solid #d8edf3;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.product-shot-top { background-position: center top; }
-.product-shot-bottom { background-position: center bottom; }
-.product-shot-center { background-position: center 18%; background-size: 100% auto; }
+.product-shot img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 682;
+  object-fit: contain;
+  display: block;
+}
 .product-model-content { padding: 18px; }
 .product-model-content .product-name { font-size: 1.2rem; margin-bottom: 14px; }
 .product-specs { border-top: 1px solid #d8eaf0; }

@@ -188,8 +188,12 @@
 
         <!-- FORM -->
         <div class="form-card">
-          <h3>Dealer Registration Enquiry</h3>
+          <h3 id="dealerFormTitle">Dealer & Product Enquiry</h3>
           <form action="https://formspree.io/skbindustry@gmail.com" method="POST">
+            <div class="form-group" id="productGroup">
+              <label>Product / Model Interested In</label>
+              <input type="text" name="product" id="enquiryProduct" placeholder="e.g. R050SE ULTRON" />
+            </div>
             <div class="form-group">
               <label>Full Name *</label>
               <input type="text" name="name" placeholder="Your full name" required />
@@ -202,7 +206,7 @@
               <label>City *</label>
               <input type="text" name="city" placeholder="e.g. Madurai" required />
             </div>
-            <input type="hidden" name="_subject" value="New Dealer Enquiry — VABest Pumps" />
+            <input type="hidden" name="_subject" value="New Product / Dealer Enquiry — VABest Pumps" />
             <button type="submit" class="btn btn-cta" style="width:100%;justify-content:center;font-size:1rem;margin-top:8px;">Submit Enquiry</button>
           </form>
         </div>
@@ -358,6 +362,22 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    (function() {
+      const p = new URLSearchParams(window.location.search).get('product');
+      if (p) {
+        const inp = document.getElementById('enquiryProduct');
+        if (inp) {
+          inp.value = p;
+          inp.style.borderColor = 'var(--primary)';
+        }
+        const title = document.getElementById('dealerFormTitle');
+        if (title) {
+          title.textContent = 'Enquire about ' + p;
+        }
+      }
+    })();
+  </script>
 
   
   <script>
