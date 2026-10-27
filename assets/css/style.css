@@ -1,18 +1,23 @@
 /* VABest Pumps — Main Stylesheet */
-/* Steelwater identity — industrial strength with water clarity */
+/* VABest Ocean identity — red brand energy over moving water tones */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ─── CSS Variables ─────────────────────────────────── */
 :root {
-  --primary:     #087F8C;
-  --primary-dark:#163A4A;
-  --primary-light:#D8FBF7;
-  --secondary:   #7FE0DC;
-  --accent:      #D8FBF7;
-  --cta:         #087F8C;
-  --cta-dark:    #065F69;
-  --bg-light:    #F3F8F9;
+  --primary:     #E21C2A;
+  --primary-dark:#173F46;
+  --primary-light:#FDEBED;
+  --secondary:   #8AB3D3;
+  --accent:      #BDD3DA;
+  --cta:         #E21C2A;
+  --cta-dark:    #B91320;
+  --ocean:       #308066;
+  --ocean-dark:  #1F5E50;
+  --ocean-blue:  #8AB3D3;
+  --ocean-mist:  #BDD3DA;
+  --ocean-soft:  #9BC598;
+  --bg-light:    #F2F8F7;
   --bg-white:    #FFFFFF;
   --text-dark:   #163A4A;
   --text-mid:    #3E5F69;
@@ -26,7 +31,7 @@
 
   --radius:      4px;
   --radius-lg:   4px;
-  --shadow:      0 3px 14px rgba(8,127,140,0.11);
+  --shadow:      0 3px 14px rgba(48,128,102,0.13);
   --shadow-lg:   0 12px 34px rgba(22,58,74,0.16);
   --transition:  0.25s ease;
 }
@@ -124,7 +129,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .logo:hover .logo-img {
   transform: translateY(-2px) scale(1.025);
-  filter: drop-shadow(0 11px 15px rgba(8,127,140,0.28));
+  filter: drop-shadow(0 11px 15px rgba(48,128,102,0.28));
 }
 .footer-emblem {
   width: 180px;
@@ -252,9 +257,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   inset: 0;
   background: url('../images/water-splash.jpg') center / cover no-repeat;
-  opacity: 0.12;
+  opacity: 0.10;
   pointer-events: none;
   z-index: 0;
+}
+.section-drops::after {
+  content: '';
+  position: absolute;
+  inset: -30% -15%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .42;
+  background:
+    radial-gradient(ellipse at 18% 36%, rgba(138,179,211,.26) 0 7%, transparent 8% 100%),
+    radial-gradient(ellipse at 74% 64%, rgba(155,197,152,.22) 0 9%, transparent 10% 100%),
+    repeating-radial-gradient(ellipse at 50% 100%, transparent 0 50px, rgba(48,128,102,.07) 52px 55px, transparent 58px 104px);
+  animation: oceanCaustics 22s linear infinite;
 }
 
 /* ─── CSS Glass Water Drops ──────────────────────────── */
@@ -271,15 +289,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: radial-gradient(
     circle at 38% 30%,
     rgba(255,255,255,0.92) 0%,
-    rgba(216,251,247,0.72) 26%,
-    rgba(127,224,220,0.30) 54%,
-    rgba(8,127,140,0.14) 78%,
-    rgba(8,127,140,0.04) 100%
+    rgba(189,211,218,0.72) 26%,
+    rgba(138,179,211,0.30) 54%,
+    rgba(48,128,102,0.14) 78%,
+    rgba(48,128,102,0.04) 100%
   );
   box-shadow:
-    inset -4px -5px 12px rgba(8,127,140,0.18),
+    inset -4px -5px 12px rgba(48,128,102,0.18),
     inset 4px 4px 10px rgba(255,255,255,0.78),
-    0 10px 24px rgba(8,127,140,0.09);
+    0 10px 24px rgba(48,128,102,0.09);
   animation: waterDropFloat 7s ease-in-out infinite;
   transform-origin: center;
 }
@@ -342,9 +360,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   white-space: nowrap;
 }
 .btn-primary { background: var(--primary); color: #fff; }
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn-primary:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(226,28,42,.25); }
 .btn-cta { background: var(--cta); color: #fff; }
-.btn-cta:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(8,127,140,0.28); }
+.btn-cta:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(226,28,42,0.28); }
 .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 .btn-outline-white { border: 2px solid rgba(255,255,255,0.6); color: #fff; background: transparent; }
@@ -359,8 +377,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at 78% 18%, rgba(127,224,220,.55) 0, rgba(127,224,220,0) 28%),
-    linear-gradient(135deg, #163A4A 0%, #087F8C 58%, #065F69 100%);
+    radial-gradient(circle at 78% 18%, rgba(138,179,211,.52) 0, rgba(138,179,211,0) 29%),
+    linear-gradient(135deg, #173F46 0%, #308066 57%, #1F5E50 100%);
   padding: 40px 0 80px;
 }
 .hero::before,
@@ -372,9 +390,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   pointer-events: none;
   inset: -35% -15%;
   background:
-    radial-gradient(circle at 15% 55%, rgba(216,251,247,.16) 0 2%, transparent 2.4%),
+    radial-gradient(circle at 15% 55%, rgba(189,211,218,.18) 0 2%, transparent 2.4%),
     radial-gradient(circle at 45% 32%, rgba(255,255,255,.12) 0 1.4%, transparent 1.8%),
-    radial-gradient(circle at 78% 68%, rgba(127,224,220,.16) 0 2.6%, transparent 3%),
+    radial-gradient(circle at 78% 68%, rgba(155,197,152,.18) 0 2.6%, transparent 3%),
     repeating-radial-gradient(ellipse at 50% 100%, transparent 0 34px, rgba(255,255,255,.045) 35px 37px, transparent 38px 72px);
   background-size: 310px 250px, 260px 220px, 360px 300px, 100% 100%;
   animation: waterDrift 18s linear infinite;
@@ -389,9 +407,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   min-height: 420px;
   right: -12vw;
   top: -16vw;
-  border: 1px solid rgba(216,251,247,.16);
+  border: 1px solid rgba(189,211,218,.18);
   border-radius: 50%;
-  box-shadow: 0 0 0 55px rgba(127,224,220,.04), 0 0 0 110px rgba(216,251,247,.025);
+  box-shadow: 0 0 0 55px rgba(138,179,211,.06), 0 0 0 110px rgba(155,197,152,.035);
   animation: waterPulse 8s ease-in-out infinite;
 }
 .hero-container {
@@ -418,7 +436,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 92%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(216,251,247,.23), rgba(127,224,220,.08) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(189,211,218,.26), rgba(138,179,211,.10) 45%, transparent 70%);
   animation: waterPulse 6s ease-in-out infinite;
   z-index: -1;
 }
@@ -442,6 +460,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @keyframes waterPulse {
   0%, 100% { transform: scale(.94); opacity: .58; }
   50% { transform: scale(1.06); opacity: 1; }
+}
+@keyframes oceanCaustics {
+  0% { transform: translate3d(-4%, 1%, 0) rotate(0.001deg); }
+  50% { transform: translate3d(5%, -3%, 0) rotate(1deg); }
+  100% { transform: translate3d(-4%, 1%, 0) rotate(0.001deg); }
 }
 @keyframes logoStrobe {
   0%, 28% { background-position: 140% 0; opacity: .18; }
@@ -471,7 +494,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(22,58,74,0.88) 0%, rgba(8,127,140,0.50) 60%, rgba(22,58,74,0.72) 100%);
+  background: linear-gradient(160deg, rgba(23,63,70,0.90) 0%, rgba(48,128,102,0.56) 58%, rgba(31,94,80,0.76) 100%);
 }
 .hero-content {
   position: relative;
@@ -675,7 +698,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .product-card:hover {
   border-color: var(--primary);
-  box-shadow: 0 16px 36px rgba(8,127,140,.15);
+  box-shadow: 0 16px 36px rgba(48,128,102,.15);
   transform: translateY(-4px);
 }
 .catalog-grid {
@@ -690,7 +713,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── Corporate product catalogue ─────────────────── */
 .product-catalog {
   background:
-    radial-gradient(circle at 8% 8%, rgba(127,224,220,.25), transparent 22%),
+    radial-gradient(circle at 8% 8%, rgba(138,179,211,.28), transparent 22%),
     linear-gradient(180deg, #eefaff 0%, #f8fcfd 52%, #eef8fb 100%);
 }
 .product-catalog .filter-bar {
@@ -721,7 +744,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(22,58,74,.09);
 }
-.product-model-card:hover { border-color: #9fcfdc; box-shadow: 0 18px 42px rgba(8,127,140,.15); }
+.product-model-card:hover { border-color: var(--ocean-blue); box-shadow: 0 18px 42px rgba(48,128,102,.15); }
 .product-shot {
   width: 100%;
   height: auto;
@@ -793,7 +816,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .zoom-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(8,127,140,0.42);
+  background: rgba(48,128,102,0.42);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1057,8 +1080,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── CTA Section ───────────────────────────────────── */
 .cta-section {
   background:
-    radial-gradient(circle at 15% 0%, rgba(127,224,220,.22), transparent 30%),
-    linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    radial-gradient(circle at 15% 0%, rgba(138,179,211,.24), transparent 30%),
+    linear-gradient(135deg, var(--primary-dark) 0%, var(--ocean) 100%);
   padding: 80px 0;
   text-align: center;
   color: #fff;
@@ -1085,8 +1108,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── About Page ─────────────────────────────────────── */
 .page-hero {
   background:
-    radial-gradient(circle at 82% 10%, rgba(127,224,220,.42), transparent 32%),
-    linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 72%, #065F69 100%);
+    radial-gradient(circle at 82% 10%, rgba(138,179,211,.46), transparent 32%),
+    linear-gradient(135deg, var(--primary-dark) 0%, var(--ocean) 68%, var(--ocean-dark) 100%);
   padding: 72px 0 70px;
   color: #fff;
   position: relative;
@@ -1178,7 +1201,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--cta);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(8,127,140,0.32);
+  box-shadow: 0 8px 24px rgba(48,128,102,0.32);
 }
 
 .about-grid {
@@ -1390,7 +1413,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(8,127,140,0.12);
+  box-shadow: 0 0 0 3px rgba(48,128,102,0.12);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
 
@@ -1737,8 +1760,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── Stats Band (replaces boxed stat cards) ─────────── */
 .stats-band {
   background:
-    radial-gradient(circle at 50% 120%, rgba(127,224,220,.30), transparent 48%),
-    linear-gradient(120deg, #163A4A 0%, #087F8C 50%, #163A4A 100%);
+    radial-gradient(circle at 50% 120%, rgba(138,179,211,.32), transparent 48%),
+    linear-gradient(120deg, #173F46 0%, #308066 50%, #173F46 100%);
   padding: 52px 0;
   position: relative;
   overflow: hidden;
@@ -1979,7 +2002,7 @@ body { top: 0 !important; }
 }
 .brand-logo-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(8,127,140,0.10);
+  box-shadow: 0 12px 20px rgba(48,128,102,0.10);
   border-color: var(--primary);
 }
 .brand-logo-card img {
@@ -2019,7 +2042,7 @@ body { top: 0 !important; }
   border-color: var(--primary);
   color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(8,127,140,0.14);
+  box-shadow: 0 4px 8px rgba(48,128,102,0.14);
 }
 @media (max-width: 768px) {
   .districts-grid {
