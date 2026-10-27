@@ -6,23 +6,23 @@
 /* ─── CSS Variables ─────────────────────────────────── */
 :root {
   --primary:     #E21C2A;
-  --primary-dark:#173F46;
+  --primary-dark:#123B5A;
   --primary-light:#FDEBED;
   --secondary:   #8AB3D3;
   --accent:      #BDD3DA;
   --cta:         #E21C2A;
   --cta-dark:    #B91320;
-  --ocean:       #308066;
-  --ocean-dark:  #1F5E50;
+  --ocean:       #167FAE;
+  --ocean-dark:  #0B4F78;
   --ocean-blue:  #8AB3D3;
   --ocean-mist:  #BDD3DA;
-  --ocean-soft:  #9BC598;
-  --bg-light:    #F2F8F7;
+  --ocean-soft:  #DCEFF5;
+  --bg-light:    #F2F8FB;
   --bg-white:    #FFFFFF;
-  --text-dark:   #163A4A;
-  --text-mid:    #3E5F69;
-  --text-light:  #607D84;
-  --border:      #D6E5E8;
+  --text-dark:   #123B5A;
+  --text-mid:    #365F77;
+  --text-light:  #607F91;
+  --border:      #D5E7EF;
   --success:     #10B981;
 
   --font-head:   'IBM Plex Sans', sans-serif;
@@ -31,7 +31,7 @@
 
   --radius:      4px;
   --radius-lg:   4px;
-  --shadow:      0 3px 14px rgba(48,128,102,0.13);
+  --shadow:      0 3px 14px rgba(22,127,174,0.14);
   --shadow-lg:   0 12px 34px rgba(22,58,74,0.16);
   --transition:  0.25s ease;
 }
@@ -129,7 +129,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .logo:hover .logo-img {
   transform: translateY(-2px) scale(1.025);
-  filter: drop-shadow(0 11px 15px rgba(48,128,102,0.28));
+  filter: drop-shadow(0 11px 15px rgba(22,127,174,0.28));
 }
 .footer-emblem {
   width: 180px;
@@ -270,8 +270,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: .42;
   background:
     radial-gradient(ellipse at 18% 36%, rgba(138,179,211,.26) 0 7%, transparent 8% 100%),
-    radial-gradient(ellipse at 74% 64%, rgba(155,197,152,.22) 0 9%, transparent 10% 100%),
-    repeating-radial-gradient(ellipse at 50% 100%, transparent 0 50px, rgba(48,128,102,.07) 52px 55px, transparent 58px 104px);
+    radial-gradient(ellipse at 74% 64%, rgba(189,211,218,.30) 0 9%, transparent 10% 100%),
+    repeating-radial-gradient(ellipse at 50% 100%, transparent 0 50px, rgba(22,127,174,.08) 52px 55px, transparent 58px 104px);
   animation: oceanCaustics 22s linear infinite;
 }
 
@@ -291,13 +291,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     rgba(255,255,255,0.92) 0%,
     rgba(189,211,218,0.72) 26%,
     rgba(138,179,211,0.30) 54%,
-    rgba(48,128,102,0.14) 78%,
-    rgba(48,128,102,0.04) 100%
+    rgba(22,127,174,0.16) 78%,
+    rgba(22,127,174,0.04) 100%
   );
   box-shadow:
-    inset -4px -5px 12px rgba(48,128,102,0.18),
+    inset -4px -5px 12px rgba(22,127,174,0.18),
     inset 4px 4px 10px rgba(255,255,255,0.78),
-    0 10px 24px rgba(48,128,102,0.09);
+    0 10px 24px rgba(22,127,174,0.10);
   animation: waterDropFloat 7s ease-in-out infinite;
   transform-origin: center;
 }
@@ -378,7 +378,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   background:
     radial-gradient(circle at 78% 18%, rgba(138,179,211,.52) 0, rgba(138,179,211,0) 29%),
-    linear-gradient(135deg, #173F46 0%, #308066 57%, #1F5E50 100%);
+    linear-gradient(135deg, #123B5A 0%, #167FAE 56%, #0B4F78 100%);
   padding: 40px 0 80px;
 }
 .hero::before,
@@ -392,7 +392,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background:
     radial-gradient(circle at 15% 55%, rgba(189,211,218,.18) 0 2%, transparent 2.4%),
     radial-gradient(circle at 45% 32%, rgba(255,255,255,.12) 0 1.4%, transparent 1.8%),
-    radial-gradient(circle at 78% 68%, rgba(155,197,152,.18) 0 2.6%, transparent 3%),
+    radial-gradient(circle at 78% 68%, rgba(189,211,218,.20) 0 2.6%, transparent 3%),
     repeating-radial-gradient(ellipse at 50% 100%, transparent 0 34px, rgba(255,255,255,.045) 35px 37px, transparent 38px 72px);
   background-size: 310px 250px, 260px 220px, 360px 300px, 100% 100%;
   animation: waterDrift 18s linear infinite;
@@ -409,7 +409,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: -16vw;
   border: 1px solid rgba(189,211,218,.18);
   border-radius: 50%;
-  box-shadow: 0 0 0 55px rgba(138,179,211,.06), 0 0 0 110px rgba(155,197,152,.035);
+  box-shadow: 0 0 0 55px rgba(138,179,211,.08), 0 0 0 110px rgba(189,211,218,.045);
   animation: waterPulse 8s ease-in-out infinite;
 }
 .hero-container {
@@ -494,7 +494,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(23,63,70,0.90) 0%, rgba(48,128,102,0.56) 58%, rgba(31,94,80,0.76) 100%);
+  background: linear-gradient(160deg, rgba(18,59,90,0.92) 0%, rgba(22,127,174,0.58) 58%, rgba(11,79,120,0.78) 100%);
 }
 .hero-content {
   position: relative;
@@ -698,7 +698,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .product-card:hover {
   border-color: var(--primary);
-  box-shadow: 0 16px 36px rgba(48,128,102,.15);
+  box-shadow: 0 16px 36px rgba(22,127,174,.15);
   transform: translateY(-4px);
 }
 .catalog-grid {
@@ -744,7 +744,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(22,58,74,.09);
 }
-.product-model-card:hover { border-color: var(--ocean-blue); box-shadow: 0 18px 42px rgba(48,128,102,.15); }
+.product-model-card:hover { border-color: var(--ocean-blue); box-shadow: 0 18px 42px rgba(22,127,174,.16); }
 .product-shot {
   width: 100%;
   height: auto;
@@ -816,7 +816,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .zoom-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(48,128,102,0.42);
+  background: rgba(22,127,174,0.42);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1201,7 +1201,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--cta);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(48,128,102,0.32);
+  box-shadow: 0 8px 24px rgba(22,127,174,0.32);
 }
 
 .about-grid {
@@ -1413,7 +1413,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(48,128,102,0.12);
+  box-shadow: 0 0 0 3px rgba(22,127,174,0.12);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
 
@@ -1761,7 +1761,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .stats-band {
   background:
     radial-gradient(circle at 50% 120%, rgba(138,179,211,.32), transparent 48%),
-    linear-gradient(120deg, #173F46 0%, #308066 50%, #173F46 100%);
+    linear-gradient(120deg, #123B5A 0%, #167FAE 50%, #123B5A 100%);
   padding: 52px 0;
   position: relative;
   overflow: hidden;
@@ -2002,7 +2002,7 @@ body { top: 0 !important; }
 }
 .brand-logo-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(48,128,102,0.10);
+  box-shadow: 0 12px 20px rgba(22,127,174,0.11);
   border-color: var(--primary);
 }
 .brand-logo-card img {
@@ -2042,7 +2042,7 @@ body { top: 0 !important; }
   border-color: var(--primary);
   color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(48,128,102,0.14);
+  box-shadow: 0 4px 8px rgba(22,127,174,0.15);
 }
 @media (max-width: 768px) {
   .districts-grid {
