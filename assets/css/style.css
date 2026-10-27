@@ -1,32 +1,32 @@
 /* VABest Pumps — Main Stylesheet */
 /* Water-inspired palette + competitor-grade typography */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ─── CSS Variables ─────────────────────────────────── */
 :root {
-  --primary:     #0284C7;
-  --primary-dark:#0C4A6E;
-  --secondary:   #38BDF8;
-  --accent:      #BAE6FD;
-  --cta:         #F97316;
-  --cta-dark:    #EA580C;
-  --bg-light:    #F0F9FF;
+  --primary:     #0B6FAE;
+  --primary-dark:#083B66;
+  --secondary:   #2CC7C9;
+  --accent:      #DFF7F7;
+  --cta:         #0B6FAE;
+  --cta-dark:    #083B66;
+  --bg-light:    #F7FBFD;
   --bg-white:    #FFFFFF;
-  --text-dark:   #0C2340;
-  --text-mid:    #374151;
-  --text-light:  #6B7280;
-  --border:      #E0F2FE;
+  --text-dark:   #132F43;
+  --text-mid:    #405664;
+  --text-light:  #527287;
+  --border:      #CCE6EF;
   --success:     #10B981;
 
-  --font-head:   'Manrope', sans-serif;
-  --font-sub:    'Manrope', sans-serif;
+  --font-head:   'Hanken Grotesk', sans-serif;
+  --font-sub:    'Hanken Grotesk', sans-serif;
   --font-body:   'Inter', sans-serif;
 
   --radius:      4px;
   --radius-lg:   4px;
-  --shadow:      0 2px 12px rgba(2,132,199,0.10);
-  --shadow-lg:   0 8px 32px rgba(2,132,199,0.18);
+  --shadow:      0 2px 12px rgba(11,111,174,0.10);
+  --shadow-lg:   0 8px 32px rgba(11,111,174,0.18);
   --transition:  0.25s ease;
 }
 
@@ -83,7 +83,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 16px rgba(0,119,182,0.08);
+  box-shadow: 0 2px 16px rgba(11,111,174,0.08);
 }
 .nav-wrap {
   display: grid;
@@ -249,15 +249,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: radial-gradient(
     circle at 38% 30%,
     rgba(255,255,255,0.92) 0%,
-    rgba(186,230,253,0.65) 26%,
-    rgba(56,189,248,0.30) 54%,
-    rgba(2,132,199,0.14) 78%,
-    rgba(2,132,199,0.04) 100%
+    rgba(223,247,247,0.72) 26%,
+    rgba(44,199,201,0.30) 54%,
+    rgba(11,111,174,0.14) 78%,
+    rgba(11,111,174,0.04) 100%
   );
   box-shadow:
-    inset -4px -5px 12px rgba(2,132,199,0.18),
+    inset -4px -5px 12px rgba(11,111,174,0.18),
     inset 4px 4px 10px rgba(255,255,255,0.78),
-    0 10px 24px rgba(2,132,199,0.09);
+    0 10px 24px rgba(11,111,174,0.09);
 }
 /* light-refraction highlight — the dot that makes it look real */
 .wd::before {
@@ -316,9 +316,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   white-space: nowrap;
 }
 .btn-primary { background: var(--primary); color: #fff; }
-.btn-primary:hover { background: #005f8f; transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow); }
 .btn-cta { background: var(--cta); color: #fff; }
-.btn-cta:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(247,127,0,0.3); }
+.btn-cta:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(11,111,174,0.28); }
 .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 .btn-outline-white { border: 2px solid rgba(255,255,255,0.6); color: #fff; background: transparent; }
@@ -386,7 +386,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(3,4,94,0.78) 0%, rgba(2,132,199,0.45) 60%, rgba(0,80,140,0.65) 100%);
+  background: linear-gradient(160deg, rgba(8,59,102,0.82) 0%, rgba(11,111,174,0.45) 60%, rgba(8,59,102,0.68) 100%);
 }
 .hero-content {
   position: relative;
@@ -1224,7 +1224,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+  box-shadow: 0 0 0 3px rgba(11,111,174,0.1);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
 
@@ -1561,7 +1561,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── Stats Band (replaces boxed stat cards) ─────────── */
 .stats-band {
-  background: linear-gradient(135deg, #0369A1 0%, #0284C7 50%, #0369A1 100%);
+  background: linear-gradient(135deg, #083B66 0%, #0B6FAE 50%, #083B66 100%);
   padding: 52px 0;
 }
 .stats-row {
