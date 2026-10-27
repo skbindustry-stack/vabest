@@ -88,11 +88,9 @@
       : [['Power rating', rating], ['Pipe size', pipe], ['Construction', construction], ['Head / range', head], ['Phase', 'Application dependent'], ['Use', categoryNames[cat]]];
     const rows = specs.map(s => `<tr><th>${s[0]}</th><td>${s[1]}</td></tr>`).join('');
     return `<article class="product-card product-model-card" data-cat="${cat}">
-      <div class="product-shot product-shot-${position}" style="--product-image:url('../images/${image}')" role="img" aria-label="${name} pump"></div>
+      <div class="product-shot product-shot-${position}" style="--product-image:url('../images/${image}')" role="img" aria-label="${name} pump"><span class="product-print-mask" aria-hidden="true"></span></div>
       <div class="product-model-content">
-        <div class="product-category">${categoryNames[cat]}</div>
         <h2 class="product-name">${name}</h2>
-        <div class="product-key-specs"><span>${rating}</span><span>${pipe}</span><span>${head}</span></div>
         <details class="product-specs" id="spec-${index}">
           <summary>View specifications <span aria-hidden="true">+</span></summary>
           <div class="spec-table-wrap"><table><tbody>${rows}</tbody></table></div>
