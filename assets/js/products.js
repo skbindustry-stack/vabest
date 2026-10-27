@@ -103,7 +103,7 @@
     const rows = specs.map(s => `<tr><th>${s[0]}</th><td>${s[1]}</td></tr>`).join('');
     return `<article class="product-card product-model-card" data-cat="${cat}">
       <div class="product-shot">
-        <img src="${image}" alt="${name} ${categoryNames[cat]}" loading="lazy" width="1024" height="682" />
+        <img src="${image}" alt="${name} ${categoryNames[cat]}" loading="eager" decoding="async" width="1024" height="682" />
       </div>
       <div class="product-model-content">
         <h2 class="product-name">${name}</h2>

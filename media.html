@@ -380,7 +380,7 @@
       card.className = 'media-card';
       card.onclick = () => openSliderLightbox(idx);
       card.innerHTML = `
-        <img src="${src}" alt="VABest Pumps Gallery Image ${idx + 1}" class="media-card-img" loading="lazy" />
+        <img src="${src}" alt="VABest Pumps Gallery Image ${idx + 1}" class="media-card-img" loading="eager" decoding="async" />
         <div class="media-card-overlay">
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/>
