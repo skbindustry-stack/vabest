@@ -1143,8 +1143,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .product-specs th { width: 42%; background: #eff9fc; color: #315b69; font-weight: 600; }
 .product-specs td { color: var(--text-dark); }
 .product-enquire {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 100%;
   margin-top: 14px;
   color: #c71321;
   font-weight: normal;
