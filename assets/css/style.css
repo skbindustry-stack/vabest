@@ -218,7 +218,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   white-space: nowrap;
 }
 .main-nav a:hover { color: var(--primary); background: var(--bg-light); }
-.main-nav a.active { color: var(--primary); }
+.main-nav a.active {
+  color: var(--primary);
+  position: relative;
+}
+.main-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 14px;
+  right: 14px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 9999px;
+}
 
 .nav-right {
   display: flex;
@@ -227,10 +240,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-self: end;
 }
 .nav-right .nav-cta {
-  background: var(--cta);
+  background: var(--primary);
   color: #fff;
-  padding: 8px 18px;
-  border-radius: var(--radius);
+  padding: 9px 22px;
+  border-radius: 9999px;
   font-weight: 700;
   white-space: nowrap;
   font-family: var(--font-sub);
@@ -238,8 +251,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: all var(--transition);
   display: inline-flex;
   align-items: center;
+  box-shadow: 0 4px 14px rgba(222, 1, 2, 0.28);
 }
-.nav-right .nav-cta:hover { background: var(--cta-dark); color: #fff; }
+.nav-right .nav-cta:hover {
+  background: var(--primary-dark);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(222, 1, 2, 0.42);
+}
 
 .hamburger {
   display: none;
@@ -604,6 +623,292 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   width: 200%;
   height: 70px;
+}
+
+/* ─── Modern Hero First Fold ────────────────────────── */
+.hero-first-fold {
+  position: relative;
+  min-height: calc(100vh - 105px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #032044;
+  background-image: url('../images/hero-vabest-banner.webp'), url('../images/hero-vabest-banner.jpg');
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 24px 0 0 0;
+  overflow: hidden;
+}
+
+.hero-first-fold::before,
+.hero-first-fold::after {
+  display: none !important;
+}
+
+.hero-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 28, 68, 0.88) 0%,
+    rgba(2, 42, 92, 0.72) 36%,
+    rgba(2, 42, 92, 0.28) 60%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-first-fold .hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  margin: auto auto;
+  padding: 10px 24px;
+  display: block;
+}
+
+.hero-first-fold .hero-content {
+  max-width: 580px;
+}
+
+.hero-first-fold .hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.1rem, 3.8vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px 0;
+  text-shadow: 0 2px 14px rgba(0, 20, 50, 0.6);
+}
+
+.hero-first-fold .hero-subtext {
+  font-family: var(--font-head);
+  font-size: clamp(0.95rem, 1.22vw, 1.1rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.94);
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+  text-shadow: 0 1px 8px rgba(0, 20, 50, 0.5);
+}
+
+.hero-first-fold .hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 22px;
+}
+
+.hero-meta-dot {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.hero-actions-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: flex-start;
+  background: #DE0102;
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-size: 0.96rem;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(222, 1, 2, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-hero-primary:hover {
+  background: #bd0102;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(222, 1, 2, 0.6);
+}
+
+.btn-hero-primary .arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-hero-primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+.hero-quick-pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(4, 30, 66, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-size: 0.86rem;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hero-pill-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.hero-pill-btn svg {
+  flex-shrink: 0;
+}
+
+/* ─── Hero Trust Bar (Glassmorphic) ─────────────────── */
+.hero-trust-bar {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: rgba(2, 22, 54, 0.84);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 12px 0;
+  margin-top: 20px;
+}
+
+.hero-trust-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.hero-trust-icon {
+  color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-trust-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.hero-trust-text strong {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.hero-trust-text span {
+  font-family: var(--font-head);
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+}
+
+.hero-trust-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .hero-trust-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 30px;
+  }
+  .hero-trust-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-first-fold {
+    min-height: auto;
+    padding: 16px 0 0 0;
+    background-position: 72% center;
+  }
+  .hero-overlay-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 24, 60, 0.88) 0%,
+      rgba(2, 38, 86, 0.74) 45%,
+      rgba(2, 38, 86, 0.40) 80%,
+      rgba(2, 22, 54, 0.85) 100%
+    );
+  }
+  .hero-first-fold .hero-container {
+    padding: 28px 20px 12px;
+  }
+  .hero-first-fold .hero-content {
+    max-width: 100%;
+    text-align: left;
+  }
+  .hero-first-fold .hero-title {
+    font-size: 2.2rem;
+    margin-top: 4px;
+  }
+  .hero-quick-pills {
+    flex-wrap: wrap;
+  }
+  .hero-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-first-fold .hero-title {
+    font-size: 1.85rem;
+  }
+  .btn-hero-primary {
+    width: 100%;
+  }
+  .hero-pill-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-trust-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .hero-waves .wave-back {
   animation: waveScroll 9s linear infinite;
