@@ -727,9 +727,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background-image: var(--product-image);
   background-repeat: no-repeat;
   background-color: #fafdff;
-  background-size: 220% auto;
+  background-size: 270% auto;
   border-bottom: 1px solid #d8edf3;
   position: relative;
+  box-shadow: inset 0 0 0 4px #fafdff;
 }
 .product-shot::after {
   content: 'VABest';
@@ -745,9 +746,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: .09em;
   box-shadow: 0 5px 15px rgba(22,58,74,.10);
 }
-.product-shot-top { background-position: 100% 8%; }
-.product-shot-bottom { background-position: 100% 92%; }
-.product-shot-center { background-position: 50% 20%; background-size: 112% auto; }
+.product-shot-top { background-position: 76% 21%; }
+.product-shot-bottom { background-position: 76% 91%; }
+.product-shot-center { background-position: 50% 19%; background-size: 165% auto; }
 .product-model-content { padding: 22px; }
 .product-model-content .product-name { font-size: 1.4rem; margin-bottom: 14px; }
 .product-key-specs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
