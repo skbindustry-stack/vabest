@@ -628,22 +628,50 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── Modern Hero First Fold ────────────────────────── */
 .hero-first-fold {
   position: relative;
-  min-height: calc(100vh - 105px);
+  min-height: calc(100vh - 120px);
+  min-height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #032044;
-  background-image: url('../images/hero-vabest-banner.webp'), url('../images/hero-vabest-banner.jpg');
+  background-image: url('../images/hero-vabest-water-v2.png');
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 24px 0 0 0;
+  padding: 40px 0 90px 0;
   overflow: hidden;
 }
 
-.hero-first-fold::before,
+.hero-first-fold::before {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: auto -12% -18% -12%;
+  height: 58%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .34;
+  background:
+    radial-gradient(ellipse at 18% 48%, rgba(186,230,253,.30) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 68% 54%, rgba(125,211,252,.26) 0 8%, transparent 9%),
+    repeating-radial-gradient(ellipse at 50% 100%, transparent 0 48px, rgba(255,255,255,.09) 50px 53px, transparent 56px 98px);
+  animation: heroWaterFlow 15s ease-in-out infinite;
+}
+
 .hero-first-fold::after {
-  display: none !important;
+  display: block;
+  content: '';
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 46px;
+  height: 120px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .30;
+  background: linear-gradient(104deg, transparent 8%, rgba(255,255,255,.34) 38%, rgba(56,189,248,.18) 51%, transparent 72%);
+  filter: blur(16px);
+  animation: heroWaterShimmer 8s ease-in-out infinite;
 }
 
 .hero-overlay-gradient {
@@ -658,6 +686,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   );
   pointer-events: none;
   z-index: 1;
+}
+
+@keyframes heroWaterFlow {
+  0%, 100% { transform: translate3d(-3%, 0, 0) scaleX(1.02); }
+  50% { transform: translate3d(4%, -8px, 0) scaleX(.98); }
+}
+
+@keyframes heroWaterShimmer {
+  0%, 100% { transform: translateX(-8%) skewX(-8deg); opacity: .16; }
+  50% { transform: translateX(9%) skewX(5deg); opacity: .42; }
 }
 
 .hero-first-fold .hero-container {
@@ -863,7 +901,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-first-fold {
     min-height: auto;
     padding: 16px 0 0 0;
-    background-position: 72% center;
+    background-position: 66% center;
   }
   .hero-overlay-gradient {
     background: linear-gradient(
@@ -912,7 +950,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hero-waves .wave-back {
   animation: waveScroll 9s linear infinite;
-  opacity: 0.35;
+  opacity: 0.52;
 }
 .hero-waves .wave-front {
   animation: waveScroll 6s linear infinite reverse;
@@ -1260,8 +1298,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── Trust Bar ─────────────────────────────────────── */
 .trust-bar {
-  background: var(--primary);
-  padding: 22px 0;
+  background: #0284C7;
+  padding: 20px 0;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.18);
 }
 .trust-items {
   display: flex;

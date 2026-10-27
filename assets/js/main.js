@@ -47,7 +47,7 @@ if (filterBtns.length && productCards.length) {
 
     productCards.forEach(function(card) {
       const categories = (card.dataset.cat || '').split(' ');
-      if (categories.includes(cat)) {
+      if (cat === 'all' || categories.includes(cat)) {
         card.style.display = '';
         card.style.animation = 'fadeInUp 0.3s ease both';
       } else {
