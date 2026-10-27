@@ -1,32 +1,33 @@
 /* VABest Pumps — Main Stylesheet */
-/* Water-inspired palette + competitor-grade typography */
+/* Steelwater identity — industrial strength with water clarity */
 
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ─── CSS Variables ─────────────────────────────────── */
 :root {
-  --primary:     #0B6FAE;
-  --primary-dark:#083B66;
-  --secondary:   #2CC7C9;
-  --accent:      #DFF7F7;
-  --cta:         #0B6FAE;
-  --cta-dark:    #083B66;
-  --bg-light:    #F7FBFD;
+  --primary:     #087F8C;
+  --primary-dark:#163A4A;
+  --primary-light:#D8FBF7;
+  --secondary:   #7FE0DC;
+  --accent:      #D8FBF7;
+  --cta:         #087F8C;
+  --cta-dark:    #065F69;
+  --bg-light:    #F3F8F9;
   --bg-white:    #FFFFFF;
-  --text-dark:   #132F43;
-  --text-mid:    #405664;
-  --text-light:  #527287;
-  --border:      #CCE6EF;
+  --text-dark:   #163A4A;
+  --text-mid:    #3E5F69;
+  --text-light:  #607D84;
+  --border:      #D6E5E8;
   --success:     #10B981;
 
-  --font-head:   'Hanken Grotesk', sans-serif;
-  --font-sub:    'Hanken Grotesk', sans-serif;
-  --font-body:   'Inter', sans-serif;
+  --font-head:   'IBM Plex Sans', sans-serif;
+  --font-sub:    'IBM Plex Sans', sans-serif;
+  --font-body:   'IBM Plex Sans', sans-serif;
 
   --radius:      4px;
   --radius-lg:   4px;
-  --shadow:      0 2px 12px rgba(11,111,174,0.10);
-  --shadow-lg:   0 8px 32px rgba(11,111,174,0.18);
+  --shadow:      0 3px 14px rgba(8,127,140,0.11);
+  --shadow-lg:   0 12px 34px rgba(22,58,74,0.16);
   --transition:  0.25s ease;
 }
 
@@ -83,7 +84,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 16px rgba(11,111,174,0.08);
+  box-shadow: 0 2px 16px rgba(22,58,74,0.08);
 }
 .nav-wrap {
   display: grid;
@@ -249,15 +250,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: radial-gradient(
     circle at 38% 30%,
     rgba(255,255,255,0.92) 0%,
-    rgba(223,247,247,0.72) 26%,
-    rgba(44,199,201,0.30) 54%,
-    rgba(11,111,174,0.14) 78%,
-    rgba(11,111,174,0.04) 100%
+    rgba(216,251,247,0.72) 26%,
+    rgba(127,224,220,0.30) 54%,
+    rgba(8,127,140,0.14) 78%,
+    rgba(8,127,140,0.04) 100%
   );
   box-shadow:
-    inset -4px -5px 12px rgba(11,111,174,0.18),
+    inset -4px -5px 12px rgba(8,127,140,0.18),
     inset 4px 4px 10px rgba(255,255,255,0.78),
-    0 10px 24px rgba(11,111,174,0.09);
+    0 10px 24px rgba(8,127,140,0.09);
 }
 /* light-refraction highlight — the dot that makes it look real */
 .wd::before {
@@ -318,7 +319,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-primary { background: var(--primary); color: #fff; }
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow); }
 .btn-cta { background: var(--cta); color: #fff; }
-.btn-cta:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(11,111,174,0.28); }
+.btn-cta:hover { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(8,127,140,0.28); }
 .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 .btn-outline-white { border: 2px solid rgba(255,255,255,0.6); color: #fff; background: transparent; }
@@ -332,7 +333,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: radial-gradient(circle at 80% 20%, #0284c7 0%, #03045e 100%);
+  background: radial-gradient(circle at 80% 20%, #087F8C 0%, #163A4A 100%);
   padding: 40px 0 80px;
 }
 .hero-container {
@@ -386,7 +387,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(8,59,102,0.82) 0%, rgba(11,111,174,0.45) 60%, rgba(8,59,102,0.68) 100%);
+  background: linear-gradient(160deg, rgba(22,58,74,0.88) 0%, rgba(8,127,140,0.50) 60%, rgba(22,58,74,0.72) 100%);
 }
 .hero-content {
   position: relative;
@@ -634,7 +635,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .zoom-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(3, 105, 161, 0.4);
+  background: rgba(8,127,140,0.42);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -733,7 +734,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-sub);
   border: 1px solid var(--border);
 }
-.chip.isi { background: #FFF7ED; color: #C05621; border-color: #FED7AA; }
+.chip.isi { background: var(--accent); color: var(--primary-dark); border-color: var(--secondary); }
 .product-card .btn { margin-top: auto; width: 100%; justify-content: center; }
 
 /* ─── Trust Bar ─────────────────────────────────────── */
@@ -1012,7 +1013,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--cta);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 8px 24px rgba(8,127,140,0.32);
 }
 
 .about-grid {
@@ -1224,7 +1225,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(11,111,174,0.1);
+  box-shadow: 0 0 0 3px rgba(8,127,140,0.12);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
 
@@ -1511,7 +1512,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* Scroll-triggered header shadow */
-.site-header.scrolled { box-shadow: 0 4px 24px rgba(0,55,100,0.18); }
+.site-header.scrolled { box-shadow: 0 4px 24px rgba(22,58,74,0.18); }
 
 /* Product filter animation */
 @keyframes fadeInUp {
@@ -1561,7 +1562,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── Stats Band (replaces boxed stat cards) ─────────── */
 .stats-band {
-  background: linear-gradient(135deg, #083B66 0%, #0B6FAE 50%, #083B66 100%);
+  background: linear-gradient(135deg, #163A4A 0%, #087F8C 50%, #163A4A 100%);
   padding: 52px 0;
 }
 .stats-row {
@@ -1799,7 +1800,7 @@ body { top: 0 !important; }
 }
 .brand-logo-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 119, 182, 0.08);
+  box-shadow: 0 12px 20px rgba(8,127,140,0.10);
   border-color: var(--primary);
 }
 .brand-logo-card img {
@@ -1839,7 +1840,7 @@ body { top: 0 !important; }
   border-color: var(--primary);
   color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 119, 182, 0.12);
+  box-shadow: 0 4px 8px rgba(8,127,140,0.14);
 }
 @media (max-width: 768px) {
   .districts-grid {
