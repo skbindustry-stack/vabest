@@ -77,25 +77,30 @@
     compressor: 'Compressor / Motor', sewage: 'Submersible Sewage', accessories: 'Motor Control'
   };
 
+  const rebuiltCatalogPages = new Set([1, 2, 4, 5]);
+
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
 
   grid.innerHTML = products.map(function (p, index) {
     const [name, cat, page, position, rating, pipe, construction, head] = p;
-    const image = page === 'sewage' ? 'catalog-page-sewage.jpg?v=3' : `catalog-page-${page}.jpg`;
+    const image = page === 'sewage'
+      ? 'catalog-page-sewage.jpg?v=3'
+      : rebuiltCatalogPages.has(page)
+        ? `vabest-catalog-page-${page}.png?v=1`
+        : `catalog-page-${page}.jpg`;
     const specs = cat === 'sewage'
       ? [['Power', rating], ['Outlet', pipe], ['Construction', construction], ['Head range', head], ['Speed', '2900 rpm'], ['Protection', 'IP68'], ['Insulation', 'Class F'], ['Duty', 'S1 duty']]
       : [['Power rating', rating], ['Pipe size', pipe], ['Construction', construction], ['Head / range', head], ['Phase', 'Application dependent'], ['Use', categoryNames[cat]]];
     const rows = specs.map(s => `<tr><th>${s[0]}</th><td>${s[1]}</td></tr>`).join('');
     return `<article class="product-card product-model-card" data-cat="${cat}">
-      <div class="product-shot product-shot-${position}" style="--product-image:url('../images/${image}')" role="img" aria-label="${name} pump"><span class="product-print-mask" aria-hidden="true"></span></div>
+      <div class="product-shot product-shot-${position}" style="--product-image:url('../images/${image}')" role="img" aria-label="${name} pump"></div>
       <div class="product-model-content">
         <h2 class="product-name">${name}</h2>
-        <details class="product-specs" id="spec-${index}">
-          <summary>View specifications <span aria-hidden="true">+</span></summary>
+        <div class="product-specs" id="spec-${index}">
           <div class="spec-table-wrap"><table><tbody>${rows}</tbody></table></div>
           <a class="product-enquire" href="dealer.html?product=${encodeURIComponent(name)}">Enquire about ${name}</a>
-        </details>
+        </div>
       </div>
     </article>`;
   }).join('');

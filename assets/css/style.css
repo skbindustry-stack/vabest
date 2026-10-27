@@ -728,66 +728,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   aspect-ratio: 1.545 / 1;
   background-image: var(--product-image);
   background-repeat: no-repeat;
-  background-color: #fafdff;
+  background-color: #fff;
   background-size: 100% auto;
   border-bottom: 1px solid #d8edf3;
-  position: relative;
   overflow: hidden;
-}
-.product-shot::before,
-.product-shot::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  background: #fafdff;
-}
-.product-shot::before {
-  left: 0;
-  top: 0;
-  width: 47%;
-  height: 40%;
-}
-.product-shot::after { right: 0; top: 0; width: 55%; height: 38%; }
-.product-print-mask {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  height: 46%;
-  background: #fafdff;
 }
 .product-shot-top { background-position: center top; }
 .product-shot-bottom { background-position: center bottom; }
 .product-shot-center { background-position: center 18%; background-size: 100% auto; }
-.product-shot-center::before { width: 0; }
-.product-shot-center::after { height: 12%; left: 0; }
-.product-shot-center .product-print-mask { display: none; }
 .product-model-content { padding: 18px; }
 .product-model-content .product-name { font-size: 1.2rem; margin-bottom: 14px; }
 .product-specs { border-top: 1px solid #d8eaf0; }
-.product-specs summary {
-  list-style: none;
-  margin-top: 4px;
-  padding: 12px 14px;
-  border-radius: 5px;
-  background: #e21c2a;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 700;
-  font-size: .88rem;
-  transition: background .2s ease;
-}
-.product-specs summary::-webkit-details-marker { display: none; }
-.product-specs summary:hover { background: #bd1220; }
-.product-specs summary span { font-size: 1.25rem; line-height: 1; transition: transform .2s ease; }
-.product-specs[open] summary span { transform: rotate(45deg); }
-.spec-table-wrap { overflow-x: auto; padding-top: 12px; }
+.spec-table-wrap { overflow-x: auto; padding-top: 10px; }
 .product-specs table { width: 100%; border-collapse: collapse; font-size: .82rem; }
 .product-specs th,.product-specs td { padding: 9px 10px; text-align: left; border-bottom: 1px solid #dfedf1; }
 .product-specs th { width: 42%; background: #eff9fc; color: #315b69; font-weight: 600; }
