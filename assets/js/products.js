@@ -92,18 +92,43 @@
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
 
-  grid.innerHTML = products.map(function (p, index) {
-    const [name, cat, page, position, rating, pipe, construction, head] = p;
-    const image = page === 'sewage'
+  function productWebpFor(page, position) {
+    return page === 'sewage'
+      ? 'assets/images/products/card-sewage-center.webp'
+      : `assets/images/products/card-${page}-${position}.webp`;
+  }
+
+  function productPngFor(page, position) {
+    return page === 'sewage'
       ? 'assets/images/products/card-sewage-center.png'
       : `assets/images/products/card-${page}-${position}.png`;
+  }
+
+  const initialCat = new URLSearchParams(location.search).get('filter') || 'regenerative';
+  let initialVisibleCount = 0;
+
+  grid.innerHTML = products.map(function (p, index) {
+    const [name, cat, page, position, rating, pipe, construction, head] = p;
+    const webp = productWebpFor(page, position);
+    const png = productPngFor(page, position);
+    const isInitial = (cat === initialCat);
+    if (isInitial) initialVisibleCount++;
+
+    const isTopPriority = isInitial && initialVisibleCount <= 4;
+    const loadingAttr = isInitial ? 'eager' : 'lazy';
+    const fetchPriorityAttr = isTopPriority ? 'high' : 'auto';
+    const displayStyle = isInitial ? '' : 'style="display:none;"';
+
     const specs = cat === 'sewage'
       ? [['Power', rating], ['Outlet', pipe], ['Construction', construction], ['Head range', head], ['Speed', '2900 rpm'], ['Protection', 'IP68'], ['Insulation', 'Class F'], ['Duty', 'S1 duty']]
       : [['Power rating', rating], ['Pipe size', pipe], ['Construction', construction], ['Head / range', head], ['Phase', 'Application dependent'], ['Use', categoryNames[cat]]];
     const rows = specs.map(s => `<tr><th>${s[0]}</th><td>${s[1]}</td></tr>`).join('');
-    return `<article class="product-card product-model-card" data-cat="${cat}">
+    return `<article class="product-card product-model-card" data-cat="${cat}" ${displayStyle}>
       <div class="product-shot">
-        <img src="${image}" alt="${name} ${categoryNames[cat]}" loading="eager" decoding="async" width="1024" height="682" />
+        <picture>
+          <source srcset="${webp}" type="image/webp" />
+          <img src="${png}" alt="${name} ${categoryNames[cat]}" loading="${loadingAttr}" decoding="async" fetchpriority="${fetchPriorityAttr}" width="1024" height="682" />
+        </picture>
       </div>
       <div class="product-model-content">
         <h2 class="product-name">${name}</h2>
@@ -121,9 +146,70 @@
 
   function updateCount(cat) {
     const visible = products.filter(p => p[1] === cat).length;
-    count.textContent = `${visible} individual ${categoryNames[cat]} models`;
+    count.textContent = `${visible} individual ${categoryNames[cat] || 'Product'} models`;
   }
-  const initial = new URLSearchParams(location.search).get('filter') || 'regenerative';
-  updateCount(initial);
-  document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => updateCount(btn.dataset.filter)));
+  updateCount(initialCat);
+
+  // Smart Preload System
+  const warmedUrls = new Set();
+  function preloadCategory(cat) {
+    const catProducts = products.filter(p => p[1] === cat);
+    catProducts.forEach(p => {
+      const webp = productWebpFor(p[2], p[3]);
+      if (!warmedUrls.has(webp)) {
+        warmedUrls.add(webp);
+        const preload = new Image();
+        preload.decoding = 'async';
+        preload.src = webp;
+      }
+    });
+  }
+
+  // Preload initial category cards immediately
+  preloadCategory(initialCat);
+
+  // When user hovers or touches a category tab, preload immediately
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    const cat = btn.dataset.filter;
+    const warm = () => preloadCategory(cat);
+    btn.addEventListener('pointerdown', warm, { passive: true });
+    btn.addEventListener('touchstart', warm, { passive: true });
+    btn.addEventListener('mouseenter', warm, { passive: true });
+    btn.addEventListener('click', () => {
+      updateCount(cat);
+      preloadCategory(cat);
+      const activeImages = grid.querySelectorAll(`.product-card[data-cat="${cat}"] img`);
+      activeImages.forEach(img => {
+        if (img.loading !== 'eager') img.loading = 'eager';
+      });
+    });
+  });
+
+  // Non-blocking idle preloading for remaining categories
+  function warmRemainingInBackground() {
+    const remainingCategories = Object.keys(categoryNames).filter(c => c !== initialCat);
+    let idx = 0;
+    function step() {
+      if (idx >= remainingCategories.length) return;
+      preloadCategory(remainingCategories[idx++]);
+      if (idx < remainingCategories.length) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(step, { timeout: 1500 });
+        } else {
+          setTimeout(step, 250);
+        }
+      }
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(step, { timeout: 2000 });
+    } else {
+      setTimeout(step, 400);
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    warmRemainingInBackground();
+  } else {
+    window.addEventListener('load', warmRemainingInBackground, { once: true });
+  }
 })();
